@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IDW Template Test Page</title>
+</head>
+<body>
+    <div id='root'></div>
+ 
+    <script src="https://fb.me/react-15.0.1.js"></script>
+    <script src="https://fb.me/react-dom-15.0.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ 
+    <script type="text/babel">
+    	var Post = React.createClass({
+			getInitialState: function() {
+				return {display: true };
+			},
+			handleDelete() {
+				var self = this;
+			$.ajax({
+		    	url: self.props.post._links.self.href,
+		    	type: 'DELETE',
+		    	success: function(result) {
+		    		self.setState({display: false});
+		    	},
+		    	error: function(xhr, ajaxOptions, thrownError) {
+		    		toastr.error(xhr.responseJSON.message);
+		    	}
+		    });
+			},
+			render: function() {
+			if (this.state.display==false) return null;
+		    else return (
+			<tr>
+				<td>{this.props.post.contentValue}</td>
+				<td>{this.props.post.dateCreated}</td>
+			</tr>
+			);
+			}
+		}); 
+    	var PostList = React.createClass({
+    		render: function(){
+    			var rows = [];
+				//console.log(this.props);
+				if (this.props.posts != null)
+    			this.props.posts.forEach(function(post){
+    				rows.push(<Post post={post} />);
+    			});
+    			return (
+    			<div className="container">
+    				<table className="table table-striped">
+    					<thead>
+    						<tr>
+    							<th>text</th><th>date</th>
+    						</tr>
+    					</thead>
+    					<tbody>{rows}</tbody>
+    				</table>
+    			</div>
+    			)
+    		}
+    	});
+
+    	var POSTS = [];
+
+		var App = React.createClass({
+		 
+			loadPostsFromServer: function () {
+				var self = this;
+				$.ajax({
+		 		url: "http://localhost:8080/api/posts/"
+			}).then(function (data) {
+				console.log(data);
+				self.setState({posts: data._embedded.posts});
+			});
+			},
+		 
+			getInitialState: function () {
+				return {posts: []};
+			},
+		 
+			componentDidMount: function () {
+				this.loadPostsFromServer();
+			},
+		 
+			render() {
+				return ( <PostList posts={this.state.posts}/> );
+			}
+		});
+
+    	ReactDOM.render(<App />, document.getElementById('root') );
+    </script>
+</body>
+</html>

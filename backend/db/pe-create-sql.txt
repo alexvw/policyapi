@@ -1,0 +1,44 @@
+CREATE SCHEMA `policycontroller` ;
+
+
+use policycontroller;
+
+
+
+
+CREATE TABLE `policycontroller`.`policyengine` (
+  `ID` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `ShortName` VARCHAR(32) NOT NULL,
+  `Description` VARCHAR(128) NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC));
+
+
+ALTER TABLE `policycontroller`.`policyengine` 
+CHANGE COLUMN `ID` `ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT ;
+
+
+CREATE TABLE `policycontroller`.`policy` (
+  `ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `PolicyEngine_ID` BIGINT(20) UNSIGNED NOT NULL,
+  `PolicyName` VARCHAR(64) NULL,
+  `Status` VARCHAR(32) NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC));
+
+CREATE TABLE `policycontroller`.`selectedpolicy` (
+  `ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ApiKey` VARCHAR(32) NOT NULL,
+  `Policy_ID` BIGINT(20) UNSIGNED NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC));
+
+
+CREATE TABLE `policycontroller`.`decisionlog` (
+  `ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Date` DATETIME NULL,
+  `SelectedPolicy_ID` BIGINT(20) UNSIGNED NULL,
+  `Decision` VARCHAR(64) NULL,
+  `Data` TEXT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC));
