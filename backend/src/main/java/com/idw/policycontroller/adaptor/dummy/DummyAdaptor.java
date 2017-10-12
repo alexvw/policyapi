@@ -1,19 +1,22 @@
-package com.idw.policycontroller.adaptor.dummy;
+package com.idw.policymanager.adaptor.dummy;
 
-import com.idw.policycontroller.adaptor.IPolicyEngineAdaptor;
-import com.idw.policycontroller.domain.PolicyDecision;
-import com.idw.policycontroller.domain.axn.EndPointResponse;
+import com.idw.policymanager.adaptor.IPolicyEngineAdaptor;
+import com.idw.policymanager.domain.PolicyDecision;
+import com.idw.policymanager.domain.axn.EndPointResponse;
+/*
+ * @author avanderwoude
+ */
 
 public class DummyAdaptor implements IPolicyEngineAdaptor{
 	
 	/*
-	 * Dummy adaptor for testing. will always permit or deny based on policyname
+	 * Dummy adaptor for testing. will always approve or deny based on policyname
 	 * */
 	@Override
 	public PolicyDecision makeDecision(EndPointResponse theEndpoint, String policyName) {
 		PolicyDecision theVerdict = new PolicyDecision();
-		if (policyName.equals("alwaysPermit")){
-			theVerdict.permit();
+		if (policyName.equals("alwaysApprove")){
+			theVerdict.approve();
 		}
 		else if (policyName.equals("alwaysDeny")){
 			theVerdict.deny();

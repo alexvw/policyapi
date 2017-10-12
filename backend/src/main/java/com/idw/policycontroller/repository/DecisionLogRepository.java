@@ -1,4 +1,4 @@
-package com.idw.policycontroller.repository;
+package com.idw.policymanager.repository;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.idw.policycontroller.domain.DecisionLog;
+import com.idw.policymanager.domain.DecisionLog;
 
 /*
  * @author avanderwoude

@@ -1,4 +1,4 @@
-package com.idw.policycontroller;
+package com.idw.policymanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author avanderwoude
  */
 @SpringBootApplication
-public class PolicyControllerApplication {
+public class PolicyManagerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PolicyControllerApplication.class, args);
+		SpringApplication.run(PolicyManagerApplication.class, args);
 	}
 }

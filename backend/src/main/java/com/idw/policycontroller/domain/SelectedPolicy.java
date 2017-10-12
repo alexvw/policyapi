@@ -1,4 +1,4 @@
-package com.idw.policycontroller.domain;
+package com.idw.policymanager.domain;
 
 import javax.persistence.*;
 import lombok.Data;

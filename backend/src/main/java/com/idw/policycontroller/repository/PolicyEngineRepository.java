@@ -1,11 +1,11 @@
-package com.idw.policycontroller.repository;
+package com.idw.policymanager.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.idw.policycontroller.domain.PolicyEngine;
+import com.idw.policymanager.domain.PolicyEngine;
 
 /*
  * @author avanderwoude

@@ -1,12 +1,12 @@
-CREATE SCHEMA `policycontroller` ;
+CREATE SCHEMA `policymanager` ;
 
 
-use policycontroller;
+use policymanager;
 
 
 
 
-CREATE TABLE `policycontroller`.`policyengine` (
+CREATE TABLE `policymanager`.`policyengine` (
   `ID` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `ShortName` VARCHAR(32) NOT NULL,
   `Description` VARCHAR(128) NULL,
@@ -14,11 +14,11 @@ CREATE TABLE `policycontroller`.`policyengine` (
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC));
 
 
-ALTER TABLE `policycontroller`.`policyengine` 
+ALTER TABLE `policymanager`.`policyengine` 
 CHANGE COLUMN `ID` `ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT ;
 
 
-CREATE TABLE `policycontroller`.`policy` (
+CREATE TABLE `policymanager`.`policy` (
   `ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `PolicyEngine_ID` BIGINT(20) UNSIGNED NOT NULL,
   `PolicyName` VARCHAR(64) NULL,
@@ -26,7 +26,7 @@ CREATE TABLE `policycontroller`.`policy` (
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC));
 
-CREATE TABLE `policycontroller`.`selectedpolicy` (
+CREATE TABLE `policymanager`.`selectedpolicy` (
   `ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `ApiKey` VARCHAR(32) NOT NULL,
   `Policy_ID` BIGINT(20) UNSIGNED NULL,
@@ -34,7 +34,7 @@ CREATE TABLE `policycontroller`.`selectedpolicy` (
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC));
 
 
-CREATE TABLE `policycontroller`.`decisionlog` (
+CREATE TABLE `policymanager`.`decisionlog` (
   `ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `Date` DATETIME NULL,
   `SelectedPolicy_ID` BIGINT(20) UNSIGNED NULL,

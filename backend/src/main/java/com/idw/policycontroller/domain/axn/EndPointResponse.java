@@ -1,4 +1,4 @@
-package com.idw.policycontroller.domain.axn;
+package com.idw.policymanager.domain.axn;
 
 import java.util.ArrayList;
 import java.util.Date;

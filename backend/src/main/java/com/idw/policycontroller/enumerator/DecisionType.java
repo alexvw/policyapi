@@ -1,5 +1,8 @@
-package com.idw.policycontroller.enumerator;
+package com.idw.policymanager.enumerator;
+/*
+ * @author avanderwoude
+ */
 
 public enum DecisionType {
-		permit, deny, obligation;
+		approve, deny, obligation;
 }

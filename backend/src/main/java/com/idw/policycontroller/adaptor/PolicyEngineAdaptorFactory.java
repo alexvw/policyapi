@@ -1,7 +1,10 @@
-package com.idw.policycontroller.adaptor;
+package com.idw.policymanager.adaptor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+/*
+ * @author avanderwoude
+ */
 
 public class PolicyEngineAdaptorFactory {
 

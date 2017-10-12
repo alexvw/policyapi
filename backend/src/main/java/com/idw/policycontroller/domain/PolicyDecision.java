@@ -1,9 +1,12 @@
-package com.idw.policycontroller.domain;
+package com.idw.policymanager.domain;
 
-import com.idw.policycontroller.enumerator.DecisionType;
-import com.idw.policycontroller.domain.axn.EndPointResponse;
+import com.idw.policymanager.enumerator.DecisionType;
+import com.idw.policymanager.domain.axn.EndPointResponse;
 
 import lombok.Data;
+/*
+ * @author avanderwoude
+ */
 
 @Data
 public class PolicyDecision {
@@ -24,8 +27,8 @@ public class PolicyDecision {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void permit(){
-		this.conclusion = DecisionType.permit;
+	public void approve(){
+		this.conclusion = DecisionType.approve;
 	}
 	public void deny(){
 		this.conclusion = DecisionType.deny;

@@ -1,4 +1,4 @@
-package com.idw.policycontroller.domain;
+package com.idw.policymanager.domain;
 
 import javax.persistence.*;
 import lombok.Data;
@@ -20,7 +20,7 @@ public class Policy {
 	
 	public Policy(){}
 
-	//International Affairs?s
+	//International Affairs?
 	public Policy(Long id, PolicyEngine policyEngine, String policyName) {
 		super();
 		this.id = id;
